@@ -149,5 +149,9 @@ app.put('/api/history/:id', async (req, res) => {
 
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  if (process.env.RENDER_EXTERNAL_URL) {
+    console.log(`Server running on deployed URL: ${process.env.RENDER_EXTERNAL_URL}`);
+  } else {
+    console.log(`Server is running on port ${PORT}`);
+  }
 });
